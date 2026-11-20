@@ -1,42 +1,67 @@
+
 # Lawyer's Aid
 
-React + CSS (frontend) · Node.js + Express (backend) · MySQL (database)
+Lawyer's Aid is a web-based platform designed to help people find legal information and connect with lawyers based on their needs.
 
-## Setup
-1. **Database**
-   ```
-   mysql -u root -p < backend/database/schema.sql
-   mysql -u root -p < backend/database/seed_laws.sql
-   ```
-2. **Backend**
-   ```
-   cd backend
-   cp .env.example .env      # fill DB password and JWT_SECRET
-   npm install
-   npm run dev               # http://localhost:5000
-   ```
-3. **Frontend**
-   ```
-   cd frontend
-   npm install
-   npm run dev               # http://localhost:5173
-   ```
+## Technologies Used
 
-## Feature -> file map
-| Feature | Backend | Frontend |
-|---|---|---|
-| Registration / Login | routes/auth.routes.js | pages/Register.jsx, Login.jsx, context/AuthContext.jsx |
-| Lawyer profile | routes/profile.routes.js | pages/Profile.jsx |
-| Public law info + problem search | routes/law.routes.js | pages/Home.jsx, LawSearch.jsx |
-| Public lawyer list (phone/email) | routes/lawyerDirectory.routes.js | pages/FindLawyers.jsx, components/LawyerCard.jsx |
-| Case information (add/list/view/update) | routes/case.routes.js | pages/Cases.jsx, CaseForm.jsx, CaseDetails.jsx |
-| What Changed (old vs new data) | routes/whatChanged.routes.js (written by case.routes.js on update) | components/WhatChanged.jsx |
-| Documents (notice/evidence/court order/other) | routes/document.routes.js, middleware/upload.js | components/Documents.jsx |
-| Case History | routes/history.routes.js | pages/CaseHistory.jsx |
-| Case Timeline | routes/timeline.routes.js | pages/Timeline.jsx |
-| Hearing notifications | services/notification.service.js, routes/notification.routes.js, cron in server.js | pages/Notifications.jsx, components/Navbar.jsx (bell) |
+- Frontend: React.js, CSS
+- Backend: Node.js, Express.js
+- Database: MySQL
+
+## Main Features
+
+- Browse available legal information.
+- Search for laws related to specific problems.
+- Find lawyers and view their contact information.
+- User registration and login.
+- Create and manage case information.
+- View case history and timelines.
+- Upload and manage case-related documents.
+- Receive hearing notifications.
+
+## Installation and Setup
+
+### Database Setup
+
+Import the SQL files into your MySQL database:
+
+```bash
+mysql -u root -p < backend/database/schema.sql
+mysql -u root -p < backend/database/seed_laws.sql
+```
+
+### Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file using `.env.example` and configure your database credentials and JWT secret.
+
+Start the backend:
+
+```bash
+npm run dev
+```
+
+Backend runs at: http://localhost:5000
+
+### Frontend Setup
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs at: http://localhost:5173
 
 ## Notes
-- Laws in `seed_laws.sql` are SAMPLE summaries. Verify against official texts / have a lawyer review before going live.
-- Email reminders turn on if SMTP_* is set in `.env`.
-- Before production: HTTPS, rate limiting on login, backups for `backend/uploads`.
+
+- The law information currently contains sample summaries.
+- Database credentials and other environment variables should be configured before running the project.
+- Legal information should be verified with official sources.
