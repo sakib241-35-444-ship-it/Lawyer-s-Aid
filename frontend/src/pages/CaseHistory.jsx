@@ -1,0 +1,35 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { api } from '../api.js';
+import StatusBadge from '../components/StatusBadge.jsx';
+
+export default function CaseHistory() {
+  const [data, setData] = useState(null);
+  useEffect(() => { api.get('/history').then(setData).catch(() => {}); }, []);
+  if (!data) return <p>Loading...</p>;
+
+  return (
+    <>
+      <h2>Case History</h2>
+      <p>You have handled <b>{data.total}</b> case(s) so far.</p>
+      <div className="chips">
+        {data.summary.map((s) => <span key={s.status} className="chip on">{s.status}: {s.total}</span>)}
+      </div>
+      <div className="table-wrap">
+        <table>
+          <thead><tr><th>Filed</th><th>Case ID</th><th>Title</th><th>Type</th><th>Client</th><th>Court</th><th>Status</th></tr></thead>
+          <tbody>
+            {data.cases.map((c) => (
+              <tr key={c.id}>
+                <td>{c.filing_date}</td><td>{c.case_code}</td>
+                <td><Link to={`/cases/${c.id}`}>{c.case_title}</Link></td>
+                <td>{c.case_type}</td><td>{c.client_name}</td><td>{c.court_name}</td>
+                <td><StatusBadge status={c.current_status} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
