@@ -11,3 +11,5 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   dateStrings: true, // DATE columns come back as 'YYYY-MM-DD' strings
 });
+
+module.exports = pool;
