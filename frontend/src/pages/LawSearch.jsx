@@ -22,7 +22,8 @@ export default function LawSearch() {
     if (category) p.set('category', category);
     if (q) p.set('q', q);
     api.get(`/laws?${p}`).then(setLaws).catch((e) => setError(e.message));
-  }, [category, q]);
+  }, [
+    category, q]);
 
   const searchProblem = async (text) => {
     setError(''); setLoading(true);
