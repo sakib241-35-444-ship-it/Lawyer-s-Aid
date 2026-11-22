@@ -46,7 +46,7 @@ export default function Documents({ caseId }) {
 
       <div className="chips">
         {['All', ...CATS].map((c) => (
-          <button key={c} className={`chip ${filter === c ? 'on' : ''}`} onClick={() => setFilter(c)}>{c}</button>
+        <button key={c} className={`chip ${filter === c ? 'on' : ''}`} onClick={() => setFilter(c)}>{c}</button>
         ))}
       </div>
 
@@ -62,9 +62,9 @@ export default function Documents({ caseId }) {
                   <td>{(d.size_bytes / 1024).toFixed(0)} KB</td>
                   <td>{d.uploaded_at}</td>
                   <td className="actions">
-                    <button className="btn small outline" onClick={() => openDocument(caseId, d.id)}>View</button>
-                    <button className="btn small outline" onClick={() => openDocument(caseId, d.id, true)}>Download</button>
-                    <button className="btn small danger" onClick={() => remove(d.id)}>Delete</button>
+                  <button className="btn small outline" onClick={() => openDocument(caseId, d.id)}>View</button>
+                  <button className="btn small outline" onClick={() => openDocument(caseId, d.id, true)}>Download</button>
+                  <button className="btn small danger" onClick={() => remove(d.id)}>Delete</button>
                   </td>
                 </tr>
               ))}
