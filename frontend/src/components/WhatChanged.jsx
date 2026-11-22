@@ -14,17 +14,17 @@ export default function WhatChanged({ caseId, refreshKey }) {
   return (
     <div className="table-wrap">
       <table>
-        <thead><tr><th>When</th><th>Field</th><th>Old data</th><th>New data</th></tr></thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.id}>
-              <td>{r.changed_at}</td>
-              <td>{FIELD_LABELS[r.field_name] || r.field_name}</td>
-              <td className="old">{r.old_value || <em>(empty)</em>}</td>
-              <td className="new">{r.new_value || <em>(empty)</em>}</td>
-            </tr>
-          ))}
-        </tbody>
+      <thead><tr><th>When</th><th>Field</th><th>Old data</th><th>New data</th></tr></thead>
+      <tbody>
+      {rows.map((r) => (
+      <tr key={r.id}>
+    <td>{r.changed_at}</td>
+    <td>{FIELD_LABELS[r.field_name] || r.field_name}</td>
+      <td className="old">{r.old_value || <em>(empty)</em>}</td>
+      <td className="new">{r.new_value || <em>(empty)</em>}</td>
+      </tr>
+      ))}
+      </tbody>
       </table>
     </div>
   );
