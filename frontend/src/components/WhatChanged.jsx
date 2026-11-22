@@ -26,6 +26,6 @@ export default function WhatChanged({ caseId, refreshKey }) {
       ))}
       </tbody>
       </table>
-    </div>
+     </div>
   );
 }
